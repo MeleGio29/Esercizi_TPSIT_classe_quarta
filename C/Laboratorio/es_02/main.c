@@ -8,71 +8,90 @@ definire una struttura per memorizzare i dati degli studenti di una classe e dei
 Si Scriva una funzione in C che , a partire da un vettore di studenti fornito, come argomento, determini la disciplina che ha la media più alta
 */
 
-typedef struct{
+typedef struct {
     char nome[MAX];
     char cognome[MAX];
     int matricola;
-    int italiano;
-    int matematica;
-    int informatica;
-}Studente;
+    float italiano;
+    float matematica;
+    float informatica;
+} Studente;
 
-int main()
-{
+void chiediInformazioni(Studente alunni[]) {
+    int k;
+
+    for(k = 0; k < DIM; k++) {
+        printf("Inserisci il nome dello studente: ");
+        fflush(stdin);
+        scanf("%s", &alunni[k].nome);
+
+        printf("Inserisci il cognome dello studente: ");
+        fflush(stdin);
+        scanf("%s", &alunni[k].cognome);
+
+        printf("Inserisci il numero della matricola: ");
+        fflush(stdin);
+        scanf("%d", &alunni[k].matricola);
+
+        printf("Inserisci il voto di italiano: ");
+        fflush(stdin);
+        scanf("%s", &alunni[k].italiano);
+
+        printf("Inserisci il voto di matematica: ");
+        fflush(stdin);
+        scanf("%s", &alunni[k].matematica);
+
+        printf("Inserisci il voto di informatica: ");
+        fflush(stdin);
+        scanf("%d", &alunni[k].informatica);
+    }
+}
+
+void media(Studente alunni[], float *mediaInfo, float *mediaIta, float *mediaMate){
+    float somma = 0;
+
+    int k;
+
+    for(k = 0; k < DIM; k++) {
+        somma = somma + alunni[k].italiano;
+    }
+    *mediaIta = somma / DIM;
+
+    somma = 0;
+    for(k = 0; k < DIM; k++) {
+        somma = somma + alunni[k].matematica;
+    }
+    *mediaMate = somma / DIM;
+
+    somma = 0;
+    for(k = 0; k < DIM; k++) {
+        somma = somma + alunni[k].informatica;
+    }
+    *mediaInfo = somma / DIM;
+}
+
+int main() {
     Studente alunni[DIM];
     int k;
     float mediaIta = 0;
     float mediaMate = 0;
     float mediaInfo = 0;
-    float somma = 0;
 
-    for(k = 0; k < DIM; k++){
-        printf("Inserisci il nome dello studente: ");
-        scanf("%s", &alunni[k].nome);
-
-        printf("Inserisci il cognome dello studente: ");
-        scanf("%s", &alunni[k].cognome);
-
-        printf("Inserisci il numero della matricola: ");
-        scanf("%d", &alunni[k].matricola);
-
-        printf("Inserisci il voto di italiano: ");
-        scanf("%s", &alunni[k].italiano);
-
-        printf("Inserisci il voto di matematica: ");
-        scanf("%s", &alunni[k].matematica);
-
-        printf("Inserisci il voto di informatica: ");
-        scanf("%d", &alunni[k].informatica);
-    }
-
+    chiediInformazioni(alunni);
     printf("\n");
 
-    for(k = 0; k < DIM; k++){
-        somma = somma + alunni[k].italiano;
-    }
-    mediaIta = somma / DIM;
+    media(alunni, &mediaInfo, &mediaIta, &mediaMate);
 
-    somma = 0;
-    for(k = 0; k < DIM; k++){
-        somma = somma + alunni[k].matematica;
-    }
-    mediaMate = somma / DIM;
-
-    somma = 0;
-    for(k = 0; k < DIM; k++){
-        somma = somma + alunni[k].informatica;
-    }
-    mediaInfo = somma / DIM;
-
-    if(mediaIta > mediaMate && mediaIta > mediaInfo){
+    if(mediaIta > mediaMate && mediaIta > mediaInfo) {
         printf("La materia con la media piu' alta e' italiano. ");
-    }else{
-        if(mediaMate > mediaIta && mediaMate > mediaInfo){
-            printf("La materia con la media piu' alta e' matematica. ");
-        }else{
-            printf("La materia con la media piu' alta e' informatica. ");
-        }
+    }
+
+    if(mediaMate > mediaIta && mediaMate > mediaInfo) {
+        printf("La materia con la media piu' alta e' matematica. ");
+    }
+
+    if(mediaInfo > mediaMate && mediaInfo > mediaIta) {
+        printf("La materia con la media piu' alta e' informatica. ");
     }
 
     printf("\n");

@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1635484743 source:c:\users\stefa\desktop\quarta\tpsit\c\laboratorio\es_07\main.c
-	<stdio.h>
-	<stdlib.h>
-	<stdbool.h>
-

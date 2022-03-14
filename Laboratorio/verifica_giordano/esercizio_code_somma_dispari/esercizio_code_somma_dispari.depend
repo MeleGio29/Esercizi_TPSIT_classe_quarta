@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1646397287 source:d:\quarta\tpsit\c\laboratorio\esercizio_code_somma_dispari\main.c
-	<stdio.h>
-	<stdlib.h>
-	<stdbool.h>
-

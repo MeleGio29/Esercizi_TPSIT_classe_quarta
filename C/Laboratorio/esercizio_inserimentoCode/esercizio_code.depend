@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1643303814 source:d:\quarta\tpsit\c\laboratorio\esercizio_code\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
